@@ -1,0 +1,104 @@
+extends layout
+block content
+    div.container
+    nav
+    h3 Network Performance(SpeedTest) Using Iperf
+    div(class="modal fade" id="addPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel")
+        div(class="modal-dialog" role="document")
+            div(class="modal-content")
+                div(class="modal-header")
+                    h4(class="modal-title" id="exampleModalLabel") Add machine info
+
+                div(class="modal-body")
+                    form
+                        div(class="form-group")
+                            label IP Address:
+                            input(type="text" class="form-control" ng-model="info.ip_address" id="txtIP")
+                        div(class="form-group")
+                            label Username:
+                            input(type="text" class="form-control" ng-model="info.username" id="txtUsername")
+                        div(class="form-group")
+                            label Password:
+                            input(type="text" class="form-control" ng-model="info.password" id="txtPassword")
+
+                div(class="modal-footer")
+                    button(type="button" class="btn btn-default" data-dismiss="modal") Close
+                    button(id="btnAdd" ng-click="add_device()" type="button" class="btn btn-primary") Add machine
+                    //<button ng-show="!showAdd" id="btnAdd" ng-click="updateMachine()" type="button" class="btn btn-primary">Update</button>
+
+
+    a(href="#addPopUp" data-target="#addPopUp"  data-toggle="modal") Add New Device
+    span &nbsp;&nbsp;&nbsp;
+    a(href="#showDevices" data-target="#showDevices"  data-toggle="collapse") Show/Hide Devices
+
+    br
+    br
+    div.panel.panel-default(class="collapse" id="showDevices" )
+        div.panel-heading Machine list
+        table.table
+            thead
+                tr
+                th IP Address
+                th Username
+                th Password
+            tbody(ng-repeat="device in devices")
+                tr
+                td {{device.ip_address}}
+                td {{device.username}}
+                td {{device.password}}
+                //<td><span style="cursor:pointer;" class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+                //<td><span style="cursor:pointer;color:#e43309;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                //<td><span style="cursor:pointer;color:#3c763d;" class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+
+
+
+
+    div
+        h5 Select server, client from the drop-down and start test
+        form(name="test" ng-submit="start_test()" method="post")
+            div.input(class="hor")
+                span SERVER &nbsp;
+                //input(ng-model="ip_address" type="text" list="device_list1")
+                    <select ng-model="filterCondition.operator">
+                        <option ng-selected="{{operator.value == filterCondition.operator}}"
+                                ng-repeat="operator in operators"
+                                value="{{operator.value}}">
+                          {{operator.displayName}}
+                        </option>
+                    </select>
+                select(ng-init="ip_address_server = 'device[0].ip_address'" ng-model="ip_address_server"  ng-options="device.ip_address for device in devices")
+
+                //input(ng-init="ip_address_server = 'localhost'" ng-model="ip_address_server" type="text" list="device_list1")
+                //datalist(id="device_list1" )
+                //    option( ng-model="ip_address_server" ng-repeat="device in devices") {{device.ip_address}}
+            div.input(class="hor")
+                span CLIENT &nbsp;
+                select(ng-init="ip_address_client = 'localhost'" ng-model="ip_address_client"  ng-options="device.ip_address for device in devices")
+
+                //input(ng-init="ip_address_client = 'localhost'"  ng-model="ip_address_client" type="text" list="device_list2")
+                //datalist(id="device_list2" )
+                //    option(ng-repeat="device in devices") {{device.ip_address}}
+            div.input(class="hor")
+                input(type="submit" value="start test")
+
+    br
+    br
+    div.panel.panel-default(id="throughputTable" )
+        div.panel-heading Throughput Metrics
+        table.table
+            thead
+                tr
+                th Client IP Address
+                th Server IP Address
+                th Throughput
+            tbody(ng-repeat="result in results")
+                tr
+                td {{result.ip_address_client}}
+                td {{result.ip_address_server}}
+                td {{result.throughput}}
+                //<td><span style="cursor:pointer;" class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+                //<td><span style="cursor:pointer;color:#e43309;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                //<td><span style="cursor:pointer;color:#3c763d;" class="glyphicon glyphicon-play" aria-hidden="true"></span></td>
+
+
+

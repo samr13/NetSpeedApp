@@ -1,0 +1,14 @@
+doctype html
+html(ng-app="WifiPerformance")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/bower_components/angular/angular.min.js')
+    script(src='/bower_components/angular-resource/angular-resource.min.js')
+    script(src='/bower_components/angular-route/angular-route.min.js')
+    script(src='/javascripts/ang_ctrl.js')
+  body(ng-controller="wifiController")
+    block content
