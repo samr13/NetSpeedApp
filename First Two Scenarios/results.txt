@@ -27,6 +27,8 @@ user@cu-cs-vm:/media/sf_Shared$ iperf -c 10.0.0.121 -R
 2) Write script (Python/Java/Node) which will setup and perform throughput tests automatically:
 	Execute iPerf commands on client and server side;
 	Optionally collect results in MongoDB (or other DB);
+
+Dual Band: (when connected in 2.4 GHz)
 user@cu-cs-vm:/media/sf_Shared$ python iperfc.py -i 10.0.0.121 -n 10MB
 ip_addr is  10.0.0.121
 bytes_to_send:  10MB
@@ -50,3 +52,29 @@ bytes_to_send:  10MB
 {u'_id': ObjectId('58ab405dfc1eec0cf67615f6'),
  u'date-time': u'02/20/17 12:15:41',
  u'throughput': u'44.3 Mbits/sec'}
+ 
+ 
+Dual band:(when connected in 5 GHz)
+user@cu-cs-vm:/media/sf_Shared$ python iperfc.py -i 10.0.0.121 -n 10MB
+ip_addr is  10.0.0.121
+bytes_to_send:  10MB
+74.6 Mbits/sec
+70.6 Mbits/sec
+97.2 Mbits/sec
+73.3 Mbits/sec
+75.0 Mbits/sec
+{u'_id': ObjectId('58ab420bfc1eec0e46f52d32'),
+ u'date-time': u'02/20/17 12:22:51',
+ u'throughput': u'74.6 Mbits/sec'}
+{u'_id': ObjectId('58ab4211fc1eec0e46f52d33'),
+ u'date-time': u'02/20/17 12:22:57',
+ u'throughput': u'70.6 Mbits/sec'}
+{u'_id': ObjectId('58ab4217fc1eec0e46f52d34'),
+ u'date-time': u'02/20/17 12:23:03',
+ u'throughput': u'97.2 Mbits/sec'}
+{u'_id': ObjectId('58ab421dfc1eec0e46f52d35'),
+ u'date-time': u'02/20/17 12:23:09',
+ u'throughput': u'73.3 Mbits/sec'}
+{u'_id': ObjectId('58ab4223fc1eec0e46f52d36'),
+ u'date-time': u'02/20/17 12:23:15',
+ u'throughput': u'75.0 Mbits/sec'}
