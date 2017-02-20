@@ -1,0 +1,52 @@
+1) Perform throughput test in own WiFi environment:
+user@cu-cs-vm:/media/sf_Shared$ iperf -c 10.0.0.121 -n 10MB
+------------------------------------------------------------
+Client connecting to 10.0.0.121, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 10.0.2.15 port 47996 connected with 10.0.0.121 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 2.1 sec  10.0 MBytes  40.9 Mbits/sec
+user@cu-cs-vm:/media/sf_Shared$ iperf -c 10.0.0.121 -n 10MB -R
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 2.0 sec  10.0 MBytes  41.4 Mbits/sec
+
+
+
+user@cu-cs-vm:/media/sf_Shared$ iperf -c 10.0.0.121
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-12.1 sec  30.9 MBytes  21.5 Mbits/sec
+
+user@cu-cs-vm:/media/sf_Shared$ iperf -c 10.0.0.121 -R
+[  3] local 10.0.2.15 port 48000 connected with 10.0.0.121 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  42.0 MBytes  35.1 Mbits/sec
+
+
+
+2) Write script (Python/Java/Node) which will setup and perform throughput tests automatically:
+	Execute iPerf commands on client and server side;
+	Optionally collect results in MongoDB (or other DB);
+user@cu-cs-vm:/media/sf_Shared$ python iperfc.py -i 10.0.0.121 -n 10MB
+ip_addr is  10.0.0.121
+bytes_to_send:  10MB
+47.5 Mbits/sec
+30.0 Mbits/sec
+14.1 Mbits/sec
+36.7 Mbits/sec
+44.3 Mbits/sec
+{u'_id': ObjectId('58ab403bfc1eec0cf67615f2'),
+ u'date-time': u'02/20/17 12:15:07',
+ u'throughput': u'47.5 Mbits/sec'}
+{u'_id': ObjectId('58ab4043fc1eec0cf67615f3'),
+ u'date-time': u'02/20/17 12:15:15',
+ u'throughput': u'30.0 Mbits/sec'}
+{u'_id': ObjectId('58ab404efc1eec0cf67615f4'),
+ u'date-time': u'02/20/17 12:15:26',
+ u'throughput': u'14.1 Mbits/sec'}
+{u'_id': ObjectId('58ab4056fc1eec0cf67615f5'),
+ u'date-time': u'02/20/17 12:15:34',
+ u'throughput': u'36.7 Mbits/sec'}
+{u'_id': ObjectId('58ab405dfc1eec0cf67615f6'),
+ u'date-time': u'02/20/17 12:15:41',
+ u'throughput': u'44.3 Mbits/sec'}
