@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var app = express();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ubnt');
+mongoose.connect('mongodb://127.0.0.1/ubnt');
 var devices = mongoose.model('devices', {ip_address: String, username: String, password: String});
 var throughput = mongoose.model('throughput', {ip_address_client: String, ip_address_server: String, throughput: String});
 var index = require('./routes/index');
