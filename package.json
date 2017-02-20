@@ -15,7 +15,8 @@
     "serve-favicon": "~2.3.2",
     "bootstrap": "~3.3.7",
     "mongoose": "~4.8.3",
-    "python-shell": "~0.4.0" 
+    "python-shell": "~0.4.0",
+    "mongodb": "~2.2.19"
   },
   "devDependencies": {
     "mongoose": "^4.8.3"
