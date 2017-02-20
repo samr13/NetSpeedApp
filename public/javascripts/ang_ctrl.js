@@ -58,8 +58,7 @@ angular.module("WifiPerformance", ['ngRoute','ngResource'])
                 console.log("ip address added", response);
                 //$scope.devices = $scope.devices + response.data;
                 $scope.getDevices();
-            }, function(error) {
-                console.log(error);
+                alert($scope.info.ip_address + " added");
             });
         };
 
