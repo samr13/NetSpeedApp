@@ -6,8 +6,8 @@ Prerequisites <br />
 
 
 To run the app <br />
-npm install; node app.js  (or)<br />
-npm start <br/><br />
+npm install; nodejs app.js  (or)<br />
+npm install; npm start <br/><br />
 
 How to run network performance test: <br />
 1) Add devices (enter ip address of device, username/password for ssh - credentials not needed for localhost '127.0.0.1'). <br />
