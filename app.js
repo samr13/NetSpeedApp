@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
 var app = express();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ubnt');
@@ -25,6 +26,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('port', process.env.PORT || 3000)
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,6 +58,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(5000);
-console.log("server listening on port :", 5000);
+//app.listen(5000);
+//console.log("server listening on port :", 5000);
+var server = http.createServer(app);
+server.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'))
+});
 module.exports = app;
