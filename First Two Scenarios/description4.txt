@@ -1,0 +1,10 @@
+Describe client and AP radio specifications, and shortly comment on results from testing.
+
+Client - Ubuntu 
+AP - Xfinity (dual band 802.11ac)
+
+Comments:
+Iperf is used to calculate network throughput by pumping traffic between client and server. 
+Throughput is little less than bandwidth because of latency, processing speed, jitter
+For dual band, average througput is 80Mb/s when connected to 5GHZ and 40Mb/s when connected to 2.4 GHz
+Some bytes of packets(tcp/udp) are send in periodic interval (for eg:10secs) from client to server and average is calculated which is the throughput/bandwidth of the network
