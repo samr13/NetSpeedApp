@@ -1,5 +1,5 @@
 # NetSpeedApp
-Web application to check network performance using iperf
+MEAN (MongoDB, Express, AngularJS, NodeJS) stack Web application to check network performance using iperf
 
 Prerequisites <br />
 1) Install mongodb (sudo apt-get install -y mongodb; mongo (check mongo shell)) <br /><br />
@@ -16,4 +16,6 @@ How to run network performance test: <br />
 4) Throughput will be captured and results will be displayed below <br /><br />
 
 How it works: <br />
-When test is started, corresponding iperf python scripts are transferred to server and client. Script gets executed in each machine and results are gathered from the client machine and piped to localmachine where it gets stored to mongodb. 
+When test is started, corresponding iperf python scripts are transferred to server and client (can also be done by executing linux command in each machine). Script gets executed in each machine and results are gathered from the client machine and piped to localmachine where it gets stored to mongodb. 
+
+Demo Video is attached
